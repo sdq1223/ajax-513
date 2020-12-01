@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学生列表</title>
+		<style type="text/css">
+			#list{border-collapse: collapse; width:400px;}
+			#list tr td{ border:1px solid blue;}
+		</style>
+	</head>
+	<body>
+		<button>获取学生数据</button>
+		<table id="list"></table>
+		
+		<script type="text/javascript">
+			window.onload = function (){
+				var oBtn = document.getElementsByTagName('button')[0];
+				var oList = document.getElementById('list');
+				console.log(oBtn);
+				oBtn.onclick = function(){
+					var xhr = new XMLHttpRequest();
+					xhr.open("get","./userlist.json",true);
+					xhr.send();
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							var data = xhr.responseText;
+							var mydata = JSON.parse(data);
+							//渲染
+							var mystr = '<tr><td>学号</td><td>姓名</td><td>年龄</td><td>性别</td></tr>';
+							for(var i = 0;i < mydata.length;i++){
+								//mystr += "<tr><td>"+mydata[i].id+"</td><td>"+mydata[i].name+"</td><td>"+mydata[i].age+"</td><td>"+mydata[i].sex+"</td></tr>";
+								//es6的字符串写法
+								mystr += `<tr>
+									<td>${mydata[i].id}</td>
+									<td>${mydata[i].name}</td>
+									<td>${mydata[i].age}</td>
+									<td>${mydata[i].sex}</td>
+								</tr>`;
+							}
+							oList.innerHTML = mystr;
+							
+						}
+					}
+				}
+			}
+
+			/*
+			搜索引擎优化：seo优化
+			作用：可以让客户更容易的在百度找到相应的网站内容
+			前端的搜索引擎优化：
+			1.设置 keywords description title 
+			2.关键字需要使用 语义化标签
+			3.div的嵌套层级越少越好
+			4.js\html\css要分开写
+			5.flash\音视频对seo不友好
+			6.图片需要写 alt属性
+			7....
+			*/
+		</script>
+	</body>
+</html>

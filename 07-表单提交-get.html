@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		表单提交给后台
+		注意：
+		1.想要提交给后台的数据，必须写name属性
+		2.表单提交有两种方式。get：参数是跟在url后面，并且和主路径之间有一个？  ；post：参数是使用头部包传输给后台的，没有跟在url的后面
+		区别：
+		1.get方式传输的数据不安全，是跟在url的后面的
+		2.get方式的传输数据有大小限制
+		3.post方式相对get是安全的，  post方式提交的表单，内容没有加密
+		<form action="get.php" method="get">
+			用户名：<input type="text" value="" id="username" name="user" />
+			密码：<input type="password" value="" id="password" name="password" />
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+</html>

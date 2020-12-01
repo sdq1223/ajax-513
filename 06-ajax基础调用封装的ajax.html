@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="./ajax.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<button id="btn">获取数据</button>
+		<div id="box"></div>
+		<script type="text/javascript">
+			//为了防止当某些内容没加载全的时候有可能会报错 
+			window.onload = function(){
+				//1.获取dom 
+				var oBtn = document.getElementById("btn");
+				var oBox = document.getElementById("box");
+				
+				oBtn.onclick = function(){
+					//获取数据
+					//参数：method，url，data，success
+					//注意：第四个参数式一个函数
+					ajax('get','user.json','',function(data){
+						console.log(data);
+						var json = JSON.parse(data);
+						oBox.innerHTML = "用户名："+json.name;
+					});
+				}
+			}
+			
+		</script>
+	</body>
+</html>
